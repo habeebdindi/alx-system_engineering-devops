@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod ugo+x $(find /root/alx-system_engineering-devops/0x01-shell_permissions -type d)
+chmod -R ugo+X
