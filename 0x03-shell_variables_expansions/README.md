@@ -1,0 +1,1 @@
+# This directory contains basic scripts useful for shell expansion
