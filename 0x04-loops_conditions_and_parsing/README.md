@@ -1,0 +1,1 @@
+# This direcotry contains bash scripts performing simple functions
