@@ -17,5 +17,5 @@ do
 	    echo "$n"
 	    ;;
     esac
-    : $[ n=$n+1 ]
+    ((n++))
 done

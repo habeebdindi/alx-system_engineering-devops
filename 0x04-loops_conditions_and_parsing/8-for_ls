@@ -3,7 +3,7 @@
 #+ The content of the current directory
 #+ In a list format
 #+ Where only the part of the name after the first dash is displayed.
-for _ in `ls`
+for _ in *
 do
-    ls "$_" | cut -d'-' -f2
+    find "$_" | cut -d'-' -f2
 done

@@ -10,7 +10,7 @@ do
     while [ "$n2" -lt 60 ]
     do
 	echo "$n2"
-	n2=$(($n2+1))
+	((n2++))
     done
-    n=$[ $n+1 ]
+    ((n+=1))
 done
