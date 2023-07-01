@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script displays numbers from 1-20 and replaces 4,9, and 17 with strings.
+n=1
+while [ "$n" -le 20 ]
+do
+    case "$n" in
+	4)
+	    echo "bad luck from China"
+	    ;;
+	9)
+	    echo "bad luck from Japan"
+	    ;;
+	17)
+	    echo "bad luck from Italy"
+	    ;;
+	*)
+	    echo "$n"
+	    ;;
+    esac
+    : $[ n=$n+1 ]
+done

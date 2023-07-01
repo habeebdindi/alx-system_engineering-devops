@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 9 times and "Hi" once
+for _ in {1..10..1}
+do
+    if [ "$_" -eq 9 ]
+    then
+	echo "Hi"
+    else
+	echo "Best School"
+    fi
+done
