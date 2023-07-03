@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Bash script that stops 4-to_infinity_and_beyond process.
+#id="$(ps ax | grep "./4-to_infinity_and_beyond" | cut -b3-7 | head -n 1)"
+id=$(pgrep bash | head -n3 | tail -1)
+#echo "$id"
+kill "$id"
