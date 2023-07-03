@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # Lists all running processes
-ps -axu
+ps -axu --sort=pid
