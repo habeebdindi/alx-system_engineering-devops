@@ -1,0 +1,1 @@
+# THis directory contains some shell scripts handling processes and signals
