@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# messes /etc/hosts
+cp /etc/hosts ~/hosts.new
+sed ... ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
