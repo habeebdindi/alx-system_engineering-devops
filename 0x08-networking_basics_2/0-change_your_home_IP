@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # messes /etc/hosts
 cp /etc/hosts ~/hosts.new
-sed ... ~/hosts.new
+sed -i s/^127.*$// ~/hosts.new
+sed -i s/^8.*$// ~/hosts.new
 cp -f ~/hosts.new /etc/hosts
