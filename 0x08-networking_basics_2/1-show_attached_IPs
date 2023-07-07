@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # comment
-ip addr show | awk '/inet /{print $2}' | awk -F '/' '{print $1}'
+ifconfig | grep 'inet ' | awk '{print $2}'
+
