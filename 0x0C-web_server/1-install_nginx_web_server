@@ -19,5 +19,5 @@ server {
 }
 EOF
 sudo ln -s /etc/nginx/sites-available/index.html /etc/nginx/sites-enabled/index.html
-sudo service nginx restart
+sudo service nginx reload
 sudo curl 127.0.0.1
