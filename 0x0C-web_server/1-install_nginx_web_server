@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Update package information and install nginx
 # shellcheck disable=SC2154
-sudo apt update
+sudo apt update -y
 sudo apt install nginx -y
 sudo chmod -R 755 /var/www/html
 echo "Hello World!" > /var/www/html/index.html
@@ -19,9 +19,5 @@ server {
 }
 EOF
 sudo ln -s /etc/nginx/sites-available/index.html /etc/nginx/sites-enabled/index.html
-<<<<<<< HEAD
-sudo service nginx reload
-=======
 sudo service nginx restart
->>>>>>> d0d5d84481479e43c2b1b0af2a054bc49e5f1f87
 sudo curl 127.0.0.1
