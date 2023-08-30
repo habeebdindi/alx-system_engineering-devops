@@ -4,6 +4,7 @@
 sudo apt update
 sudo apt install nginx -y
 
+sudo rm /etc/nginx/sites-enabled/default
 # Configure Nginx
 # This is a "here document", the << starts the here document. The EOF is the
 # marker and it signifies where the "here doc" begins and end, I have chosen
