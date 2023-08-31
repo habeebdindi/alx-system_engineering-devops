@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # redirects a page
 
-sudo apt update -y
-sudo apt install nginx -y
+#sudo apt update -y
+#sudo apt install nginx -y
 
 # Configure Nginx
 cat <<EOF | sudo tee /etc/nginx/sites-available/redirect_me > /dev/null
@@ -10,7 +10,7 @@ server {
     listen 80;
     server_name 54.87.180.247;
 
-    location /redirect_me/ {
+    location = /redirect_me/ {
         return 301 http://globallearna.tech;
     }
 }
