@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # redirects a page
 
 sudo apt update -y
