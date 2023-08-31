@@ -15,7 +15,7 @@ file { '/etc/nginx/sites-available/default':
 "server {
         listen 80 default_server;
 
-        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+        rewrite ^/redirect_me http://globallearna.tech permanent;
 
         listen [::]:80 default_server;
 
