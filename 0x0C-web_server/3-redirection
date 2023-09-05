@@ -18,4 +18,3 @@ EOF
 
 sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/redirect_me
 sudo service nginx restart
-curl 54.87.180.247/redirect_me
