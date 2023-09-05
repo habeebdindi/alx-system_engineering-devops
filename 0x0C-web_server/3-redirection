@@ -1,17 +1,23 @@
 #!/usr/bin/env bash
-# redirects a page
+# Redirects a page
 sudo apt update -y
 sudo apt install nginx -y
+sudo chmod -R 755 /var/www/html
+echo "Hello World!" > /var/www/html/index.html
 
 # Configure Nginx
 sudo cat <<EOF | sudo tee /etc/nginx/sites-available/redirect_me > /dev/null
 server {
     listen 80;
-
-    server_name 54.87.180.247;
+    server_name your_ip_address;
 
     location /redirect_me {
         return 301 https://youtube.com;
+    }
+
+    location / {
+        root /var/www/html;
+        index index.html;
     }
 }
 EOF
