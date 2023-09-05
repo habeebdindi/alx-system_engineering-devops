@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Update package information and install nginx
+sudo apt update
+sudo apt install nginx -y
+
+# Configure Nginx
+cat <<EOF | sudo tee /etc/nginx/sites-available/custom_404 > /dev/null
+server {
+    listen 80;
+    server_name your_domain.com;
+
+    location / {
+        root /var/www/html;
+        index index.html;
+    }
+
+    error_page 404 /404.html;
+
+    location = /404.html {
+        internal;
+        return 404 "Ceci n'est pas une page\n";
+    }
+}
+EOF
+
+# Create symbolic link and reload Nginx
+sudo ln -s /etc/nginx/sites-available/custom_404 /etc/nginx/sites-enabled/

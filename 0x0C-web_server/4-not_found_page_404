@@ -1,32 +1,15 @@
 #!/usr/bin/env bash
 # 404 page
 
-apt-get -y update
-apt-get -y install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
-# Create a new default configuration file
-echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+sed -i '/listen 80 default_server;/a rewrite ^/redirect_me$ https://www.yahoo.com permanent;\n' /etc/nginx/sites-available/default
 
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-
-    server_name _;
-
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-
-    location = /redirect_me {
-        return 301 globallearna.tech;
-    }
-
-    error_page 404 /custom_404.html;
-}" > /etc/nginx/sites-available/default
-
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html > /dev/null
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sed -i '/listen 80 default_server;/a error_page 404 /custom_404.html;\nlocation /custom_404.html {\n\tinternal;\n}\n' /etc/nginx/sites-availabl
+e/default
 
 service nginx restart
