@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
-# Configures a new Ubuntu server with a custom HTTP header response
-sudo apt update -y
-sudo apt install nginx -y
-echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html
-sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-sudo sed -i '/listen 80 default_server;/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
-sudo service nginx start
-sudo service nginx restart
+# Configures a HAproxy load-balancer
+apt-get update
+apt-get -y install haproxy
+sed -i '/errorfile 504/a listen globallearna' /etc/haproxy/haproxy.cfg
+sed -i '/listen globallearna/a         bind :80' /etc/haproxy/haproxy.cfg
+sed -i '/bind :80/a         mode http' /etc/haproxy/haproxy.cfg
+sed -i '/mode http/a         server 74697-web-01 54.87.180.247 check' /etc/haproxy/haproxy.cfg
+sed -i '/server 74697-web-01 54.87.180.247 check/a         server 74697-web-02 34.227.101.14 check' /etc/haproxy/haproxy.cfg
+sed -i '/#EXTRAOPTS="-de -m 16"/a ENABLED=1' /etc/default/haproxy
+service haproxy restart
