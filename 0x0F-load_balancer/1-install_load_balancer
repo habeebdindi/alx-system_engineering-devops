@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Configures a HAproxy load-balancer
-apt-get update
-apt-get -y install haproxy
-sed -i '/errorfile 504/a listen globallearna' /etc/haproxy/haproxy.cfg
-sed -i '/listen globallearna/a         bind :80' /etc/haproxy/haproxy.cfg
-sed -i '/bind :80/a         mode http' /etc/haproxy/haproxy.cfg
-sed -i '/mode http/a         server 74697-web-01 54.87.180.247 check' /etc/haproxy/haproxy.cfg
-sed -i '/server 74697-web-01 54.87.180.247 check/a         server 74697-web-02 34.227.101.14 check' /etc/haproxy/haproxy.cfg
-sed -i '/#EXTRAOPTS="-de -m 16"/a ENABLED=1' /etc/default/haproxy
-service haproxy restart
+sudo apt update -y
+sudo apt install haproxy -y
+sudo sed -i '/errorfile 504/a listen globallearna' /etc/haproxy/haproxy.cfg
+sudo sed -i '/listen globallearna/a         bind :80' /etc/haproxy/haproxy.cfg
+sudo sed -i '/bind :80/a         mode http' /etc/haproxy/haproxy.cfg
+sudo sed -i '/mode http/a         server 74697-web-01 54.87.180.247 check' /etc/haproxy/haproxy.cfg
+sudo sed -i '/server 74697-web-01 54.87.180.247 check/a         server 74697-web-02 34.227.101.14 check' /etc/haproxy/haproxy.cfg
+sudo sed -i '/#EXTRAOPTS="-de -m 16"/a ENABLED=1' /etc/default/haproxy
+sudo service haproxy restart
