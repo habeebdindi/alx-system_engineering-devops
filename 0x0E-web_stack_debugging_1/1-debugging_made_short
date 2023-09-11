@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Shorter version of file 0-nginx_likes_port_80
+sudo pkill nginx
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-pkill -1 nginx
+sudo pkill -1 nginx
