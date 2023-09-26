@@ -19,4 +19,4 @@ if __name__ == "__main__":
                  username=name['username']) for t in todo]
         ret_dict = {}
         ret_dict[argv[1]] = tasks
-        f.write(json.dumps(ret_dict, f))
+        json.dumps(ret_dict, f)
