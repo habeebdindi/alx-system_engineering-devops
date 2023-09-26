@@ -6,7 +6,7 @@ import sys
 
 
 if __name__ == "__main__":
-    csv_f = '{}.cvs'.format(sys.argv[1])
+    csv_f = '{}.csv'.format(sys.argv[1])
     name_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(
         sys.argv[1])
     name = requests.get(name_url).json()
