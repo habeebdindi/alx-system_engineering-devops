@@ -16,7 +16,8 @@ if __name__ == "__main__":
 
     with open(json_f, 'w', newline='') as f:
         tasks = [dict(task=t['title'], completed=t['completed'],
-                 username=name['username']) for t in todo]
+                      username=name['username']) for t in todo
+                 if t['userId'] == sys.argv[1]]
         ret_dict = {}
         ret_dict[argv[1]] = tasks
-        json.dumps(ret_dict, f)
+        f.write(json.dumps(ret_dict))

@@ -1,24 +1,28 @@
 #!/usr/bin/python3
-""" Given employee ID, returns information about TODO list progress """
+""" a Python script that, using a REST API, returns TODO list progress."""
+import json
+import requests
+import sys
 
 
 if __name__ == '__main__':
+    data = {}
+    url2 = 'https://jsonplaceholder.typicode.com/todos'
+    r2 = requests.get(url2)
+    for item in r2.json():
+        if str(item.get('userId')) not in data:
+            data[str(item.get('userId'))] = []
+        url = 'https://jsonplaceholder.typicode.com/users?id='\
+              + str(item.get('userId'))
+        r = requests.get(url)
+        r = r.json()
+        username = r[0]['username']
+        d = {}
+        d['task'] = item.get('title')
+        d['completed'] = item.get('completed')
+        d['username'] = username
+        data[str(item.get('userId'))].append(d)
 
-    import requests
-    import json
-
-    ret_dict = {}
-    for user_id in range(1, 11):
-        name_url = "https://jsonplaceholder.typicode.com/users/{}".format(
-            user_id)
-        name = requests.get(name_url).json()
-        todo_url = "https://jsonplaceholder.typicode.com/todos?userId={} \
-                   ".format(user_id)
-        todo = requests.get(todo_url).json()
-
-        ret_dict[user_id] = [dict(task=t['title'],
-                                  completed=t['completed'],
-                                  username=name['username']) for t in todo]
-
-    with open('todo_all_employees.json', 'w') as f:
-        f.write(json.dumps(ret_dict))
+    filename = 'todo_all_employees.json'
+    with open(filename, 'w') as f:
+        json.dump(data, f)
