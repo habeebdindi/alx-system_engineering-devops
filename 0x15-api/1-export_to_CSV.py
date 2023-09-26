@@ -18,4 +18,4 @@ if __name__ == "__main__":
         write = csv.writer(f, quoting=csv.QUOTE_ALL)
         for t in todo:
             write.writerow([name['id'], name['username'],
-                            todo['completed'], todo['title']])
+                            t['completed'], t['title']])
