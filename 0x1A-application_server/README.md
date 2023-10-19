@@ -1,0 +1,1 @@
+# Setting up web-01 server to be an application server
