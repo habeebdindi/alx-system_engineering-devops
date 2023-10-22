@@ -11,10 +11,10 @@ server {
 	proxy_set_header X-Served-By 74697-web-01;
     }
     location ~ ^/airbnb-dynamic/number_odd_or_even/(\d+)$ {
-    	     proxy_pass http://0.0.0.0:5001/number_odd_or_even/$1;
+    	proxy_pass http://0.0.0.0:5001/number_odd_or_even/$1;
     }
     listen [::]:80 default_server;
     location /api/ {
-    	     proxy_pass http://0.0.0.0:5002
-}
+  	proxy_pass http://0.0.0.0:5002;
+    }
 }
